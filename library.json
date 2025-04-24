@@ -1,0 +1,34 @@
+[
+  {
+    "title":"python crash course",
+    "author": "Eric Matthes",
+    "publication_year": 2019,
+    "genre":"Programming",
+    "read_status": false,
+    "added_date": "2025-03-11 12:33:40"
+  },
+  {
+    "title":"Python For Everybody",
+    "author": "Dr.Chuck",
+    "publication_year": 2016,
+    "genre":"Programming",
+    "read_status": true,
+    "added_date": "2025-03-11 12:55:40"
+  },
+  { 
+    "title":"Fluent Python",
+    "author": "Ramaldo",
+    "publication_year": 2011,
+    "genre":"Programming",
+    "read_status": true,
+    "added_date": "2025-03-11 12:56:40"
+  },
+  {
+    "title":"Effective Python",
+    "author": "Breet Slatkin",
+    "publication_year": 2020,
+    "genre":"Programming",
+    "read_status": true,
+    "added_date": "2025-03-11 12:58:40"
+  },
+] 
