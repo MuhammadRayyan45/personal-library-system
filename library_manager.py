@@ -345,7 +345,7 @@ if st.session_state.current_view == "add":
 
                 with col2:
                     new_status = not book['read_status']
-                    status_label = "Matk as read" if not book['read_status'] else "Mark as Unread"
+                    status_label = "Mark as read" if not book['read_status'] else "Mark as Unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
                         st.session_state.library[i]['read_status'] = new_status
                         save_library()
