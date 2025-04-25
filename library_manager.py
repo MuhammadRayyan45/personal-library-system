@@ -117,6 +117,8 @@ if 'current_view' not in st.session_state:
 def load_library():
     try:
         if os.path.exists('library.json'):
+            with open('library.json', 'w') as f:
+                json.dump([], f)
             with open('library.json', 'r') as file:
                 st.session_state.library = json.load(file)
                 return True
@@ -143,7 +145,7 @@ def add_book(title, author, publication_year,genre, read_status):
         'publication_year': publication_year,
         'genre': genre,
         'read_status': read_status,
-        'added_date': datatime.now().strftime("%Y-%m-%d %H:%M:%S")
+        'added_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }   
     st.session_state.library.appened(book)
     save_library()
