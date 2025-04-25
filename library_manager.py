@@ -32,7 +32,7 @@ st.markdown("""
             
     .sub_header {
         font-size: 1.8rem !important;
-        color:3B82F6;
+        color:#3B82F6;
         font-weight: 600;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -116,9 +116,7 @@ if 'current_view' not in st.session_state:
 #load library
 def load_library():
     try:
-        if os.path.exists('library.json'):
-            with open('library.json', 'w') as f:
-                json.dump([], f)
+        if os.path.exists('library.json')
             with open('library.json', 'r') as file:
                 st.session_state.library = json.load(file)
                 return True
