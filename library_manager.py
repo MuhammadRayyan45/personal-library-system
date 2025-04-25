@@ -147,7 +147,7 @@ def add_book(title, author, publication_year,genre, read_status):
         'read_status': read_status,
         'added_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }   
-    st.session_state.library.appened(book)
+    st.session_state.library.append(book)
     save_library()
     st.session_state.book_added =True
     time.sleep(0.5) #animation delay
@@ -178,7 +178,7 @@ def search_books(search_term, search_by):
 #calculate library stats
 def get_library_stats():
     total_books = len(st.session_state.library)
-    read_books = sum(1 for book in st.session_state.library if book['read status'])
+    read_books = sum(1 for book in st.session_state.library if book['read_status'])
     percent_read = (read_books / total_books * 100) if total_books > 0 else 0
 
     genres = {}
@@ -218,7 +218,7 @@ def get_library_stats():
         'decades' : decades
     }                   
 
-def create_visulations(stats):
+def create_visulations():
     if stats['total_books'] > 0:
         fig_read_status = go.Figure(data=[go.Pie(
             labels=['Read', 'Unread'],
