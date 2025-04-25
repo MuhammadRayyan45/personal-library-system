@@ -383,7 +383,7 @@ elif st.session_state.current_view =="search":
         elif search_term:
             st.markdown("<div class= 'warning-message'> No books found matching your search.</div>", unsafe_allow_html=True)
 
-elif st.session_state.current.view =="stats":
+elif st.session_state.current_view =="stats":
     st.markdown("<h2 class='sub-header'> Library statitics</h2>", unsafe_allow_html=True)
 
     if not st.session_state.library:
