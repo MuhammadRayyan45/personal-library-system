@@ -216,7 +216,7 @@ def get_library_stats():
         'decades' : decades
     }                   
 
-def create_visulations():
+def create_visulations(stats):
     if stats['total_books'] > 0:
         fig_read_status = go.Figure(data=[go.Pie(
             labels=['Read', 'Unread'],
