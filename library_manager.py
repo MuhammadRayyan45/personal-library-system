@@ -849,7 +849,8 @@ elif st.session_state.current_view =="stats":
             for author, count in top_authors.items():
                 st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
 st.markdown("---")
-st.markdown("Copyright @ 2025 Rayyan Adam Personal Library Manager", unsafe_allow_html=True)                                            
+st.markdown("© 2025 Rayyan Adam Personal Library Manager | Created with Love and Streamlit", unsafe_allow_html=True)
+                                           
 
 
                                        
