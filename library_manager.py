@@ -196,11 +196,11 @@ def get_library_stats():
             authors[book['author']] = 1
 
         #count decades
-        decades = (book['publication_year'] // 10) * 10 
-        if decades in decades:
-            decades[decades] += 1
+        decade = (book['publication_year'] // 10) * 10 
+        if decade in decades:
+            decades[decade] += 1
         else:
-            decades[decades] = 1
+            decades[decade] = 1
 
     # sort by count
     genres = dict(sorted(genres.items(), key=lambda x: x[1], reverse=True))
@@ -232,14 +232,14 @@ def create_visulations(stats):
     if stats['genres']:
         genres_df = pd.DataFrame({
             'Genre': list(stats['genres'].keys()),
-            'Genre': list(stats['genres'].values())
+            'Count': list(stats['genres'].values())
         })
         fig_genres = px.bar(
             genres_df,
             x='Genre',
             y='Count',
             color='Count',
-            color_continous_scale=px.colors.sequential.Blues
+            color_continuous_scale=px.colors.sequential.Blues
         )
         fig_genres.update_layout(
             title_text='Book by publication genres',
@@ -258,7 +258,7 @@ def create_visulations(stats):
             x='Decade',
             y='Count',
             markers=True,
-            line_sape="spline"
+            line_shape="spline"
         )
         fig_decades.update_layout(
              title_text='Book by publication decade',
@@ -291,7 +291,7 @@ elif nav_options == "Library Statistics":
 
 st.markdown("<h1 class='main-header'> Personal Library Manager </h1>", unsafe_allow_html=True)
 if st.session_state.current_view == "add":
-    st.markdown("<h2> class='sub-header'> Add a new book</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='sub-header'> Add a new book</h2>", unsafe_allow_html=True)
 
     #adding books input form
     with st.form(key='add_book_form'):
@@ -305,7 +305,7 @@ if st.session_state.current_view == "add":
 
         with col2:
             genre = st.selectbox("Genre", [
-                "Friction", "Non-Friction", "Science", "Technology", "Fanstasy", "Romance", "Poetry", "Self-help","Art", "Religion", "History", "Other"
+                "Fiction", "Non-Fiction", "Science", "Technology", "Fantasy", "Romance", "Poetry", "Self-help","Art", "Religion", "History", "Other"
             ])
             read_status = st.radio("Read Status", ["Read", "Unread"], horizontal=True)
             read_bool = read_status == "Read"
@@ -315,7 +315,7 @@ if st.session_state.current_view == "add":
             add_book(title,author,publication_year,genre,read_bool)
 
         if st.session_state.book_added:
-            st.markdown("<div class='sucess-message'> Book added sucessfully!</div>", unsafe_allow_html=True)
+            st.markdown("<div class='succes-message'> Book added sucessfully!</div>", unsafe_allow_html=True)
             st.balloons()
             st.session_state.book_added = False
         elif st.session_state.current_view =="library":
@@ -345,7 +345,7 @@ if st.session_state.current_view == "add":
 
                 with col2:
                     new_status = not book['read_status']
-                    status_label = "Mark as read" if not book['read_status'] else "Mark as Unread"
+                    status_label = "Mark as Read" if not book['read_status'] else "Mark as Unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
                         st.session_state.library[i]['read_status'] = new_status
                         save_library()
@@ -396,7 +396,7 @@ elif st.session_state.current_view =="stats":
         with col2:
             st.metric("Book Read", stats["read_books"])
         with col3:
-            st.metric("Percentage Read", f"{stats['percentage_read'] :.1f}%")
+            st.metric("Percentage Read", f"{stats['percent_read'] :.1f}%")
         create_visulations()
 
         if stats['authors']:
